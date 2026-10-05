@@ -1,16 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-    		<meta charset="UTF-8">
-    		<title>Fish Game</title>
-			<style>
-				p {
-      				font-size: 30px;
-    				}
-			</style>
-	</head>
-	<body>
-		<center>
-      
-		</center>
-	</body
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Web Fishing Game</title>
+    <style>
+        body {
+            margin: 0;
+            background: #1a2a3a;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        #game-container {
+            text-align: center;
+            background: #2c3e50;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            width: 400px;
+        }
+        canvas {
+            background: #3498db;
+            border-radius: 5px;
+            display: block;
+            margin: 0 auto 15px auto;
+        }
+        button {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover { background: #219653; }
+        button:disabled { background: #7f8c8d; cursor: not-allowed; }
+        #message {
+            margin-top: 10px;
+            font-weight: bold;
+            height: 24px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="game-container">
+    <h2>Web Fishing Game</h2>
+    <p>Score: <span id="score">0</span></p>
+    <canvas id="gameCanvas" width="360" height="200"></canvas>
+    <button id="actionBtn" onclick="handleClick()">Cast Line</button>
+    <div id="message">Press 'Cast Line' to start fishing!</div>
+</div>
+
+<script>
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    const scoreEl = document.getElementById('score');
+    const messageEl = document.getElementById('message');
+    const actionBtn = document.getElementById('actionBtn');
+
+    let score = 0;
+    let gameState = 'IDLE'; // IDLE, CASTING, WAITING, BITE
+    let timer = null;
+
+    const fishTypes = [
+        { name: 'Tiny Minnow', points: 5, color: '#bdc3c7' },
+        { name: 'Bluegill', points: 15, color: '#2980b9' },
+        { name: 'Large Bass', points: 30, color: '#d35400' },
+        { name: 'Golden Fish', points: 100, color: '#f1c40f' }
+    ];
+
+    drawScene();
+
+    function drawScene(hookY = 40, fish = null) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Draw water background
+        ctx.fillStyle = '#2980b9';
+        ctx.fillRect(0, 40, canvas.width, canvas.height - 40);
+
+        // Draw sky/dock area
+        ctx.fillStyle = '#e67e22';
+        ctx.fillRect(0, 0, canvas.width, 40);
+
+        // Draw fishing line & hook
+        ctx.strokeStyle = '#fff';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(180, 40);
+        ctx.lineTo(180, hookY);
+        ctx.stroke();
+
+        // Draw hook
+        ctx.fillStyle = '#ecf0f1';
+        ctx.fillRect(177, hookY, 6, 8);
+
+        // Draw fish if biting
+        if (fish) {
+            ctx.fillStyle = fish.color;
+            ctx.beginPath();
+            ctx.arc(180, hookY + 12, 8, 0, Math.PI * 2);
+            ctx.fill();
+        }
+    }
+
+    function handleClick() {
+        if (gameState === 'IDLE') {
+            // Cast the line
+            gameState = 'WAITING';
+            actionBtn.innerText = 'Wait for bite...';
+            actionBtn.disabled = true;
+            messageEl.innerText = 'Your line is in the water...';
+            
+            animateHook(40, 140, 2, () => {
+                // Random wait time before a bite (1 to 3 seconds)
+                const waitTime = Math.random() * 2000 + 1000;
+                timer = setTimeout(() => {
+                    gameState = 'BITE';
+                    actionBtn.innerText = 'REEL IN!';
+                    actionBtn.disabled = false;
+                    messageEl.innerText = 'Fish on the line! Click Reel In!';
+                    
+                    const randomFish = fishTypes[Math.floor(Math.random() * fishTypes.length)];
+                    drawScene(140, randomFish);
+                    window.currentCatch = randomFish;
+                }, waitTime);
+            });
+        } else if (gameState === 'BITE') {
+            // Caught the fish successfully
+            clearTimeout(timer);
+            score += window.currentCatch.points;
+            scoreEl.innerText = score;
+            messageEl.innerText = `You caught a ${window.currentCatch.name} (+${window.currentCatch.points} pts)!`;
+            
+            resetGame();
+        }
+    }
+
+    function animateHook(fromY, toY, speed, callback) {
+        let currentY = fromY;
+        function frame() {
+            currentY += speed;
+            drawScene(currentY);
+            if (currentY < toY) {
+                requestAnimationFrame(frame);
+            } else {
+                if (callback) callback();
+            }
+        }
+        frame();
+    }
+
+    function resetGame() {
+        gameState = 'IDLE';
+        actionBtn.innerText = 'Cast Line';
+        actionBtn.disabled = false;
+        window.currentCatch = null;
+        drawScene(40);
+    }
+</script>
+
+</body>
+</html>
