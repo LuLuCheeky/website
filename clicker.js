@@ -7,3 +7,4 @@ clicker.addEventListener("click", function() {
     clicks += 1;
     clicks.textContent = clicks;
 });
+
