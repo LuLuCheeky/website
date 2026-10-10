@@ -64,5 +64,30 @@
     |
     <a href="clicker.html">clicker</a>
     </nav>
+    
+    <button id="openBtn">Choose an Option</button>
+
+    <dialog id="optionsPopup">
+    <h2>Hello!</h2>
+    <p>Please choose </p>
+    
+  <form method="dialog">
+    <div class="options-list">
+      <!-- value attribute dictates what JavaScript receives -->
+      <button type="submit" value="Dark Mode">🌙 Dark Mode</button>
+      <button type="submit" value="Light Mode">☀️ Light Mode</button>
+      <button type="submit" value="System Default">💻 System Default</button>
+    </div>
+    
+    <hr>
+    <!-- Cancel button just closes the pop-up without a valuable response -->
+    <button type="button" id="cancelBtn">Cancel</button>
+  </form>
+</dialog>
+
+<!-- Output Area to display the choice -->
+<p id="resultText">No option chosen yet.</p>
+
+
 </body> 
 </html>
