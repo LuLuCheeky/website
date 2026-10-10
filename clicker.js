@@ -6,10 +6,10 @@ const clicker = document.getElementById("clicker");
 clicker.addEventListener("click", function() {
     clicks += 1;
     clickCount.textContent = clicks;
-    clicker.classList.remove("clicker-animate");
+    clicker.classList.remove("click-animate");
 	void clicker.offsetWidth;
-	clicker.classList.add("cookie-animate");
+	clicker.classList.add("click-animate");
     clicker.addEventListener("animationend", function() {
-    clicker.classList.remove("clicker-animate");
+    clicker.classList.remove("click-animate");
 });
 
