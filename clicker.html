@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang = "en">
+    <title>a clicker</title>
+    <meta charset = "UTF-8">
+  
+    <style> 
+       body { 
+          text-align: center; 
+          font-family: clarity-city;
+      }
+       p { 
+          font-size: 30px; 
+      } 
+      a { 
+         font-size: 30px;
+      }  
+
+    #cookieButton {
+      background-color: #c0c0c0;
+      color: black;
+      font-family: "Comic Sans MS", cursive;
+      font-size: 20px;
+      padding: 10px 20px;
+      border: 3px outset white;
+      cursor: pointer;
+    }
+
+    #clicker:hover {
+      background-color: grey;
+    }
+
+    #clicker:active {
+      border-style: inset;
+    }
+  </style> 
+
+</head>
+
+<body>
+	<p>clicks: <span id="clicks">0</span></p>
+
+	<button id="clciker">click</button>
+
+  <canvas id="gameCanvas" width="800" height="600"></canvas>
+
+  <script src="cliker.js"></script>
+
+</body>
+</html>
