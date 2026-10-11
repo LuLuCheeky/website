@@ -86,11 +86,20 @@
             color: #666;
             cursor: pointer;
         }
-
+        
+        /* The cookie style with smooth eating transition */
         #cookieContainer {
             font-size: 100px;
             margin-top: 20px;
-            transition: transform 0.2s ease;
+            cursor: pointer;
+            user-select: none;
+            display: inline-block;
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.5s ease;
+        }
+        
+        /* Crunch animation frame */
+        .crunch {
+            transform: scale(0.8) !important;
         }
     </style>
 </head>
@@ -111,18 +120,16 @@
     <dialog id="optionsPopup">
         <h2>Hello!</h2>
         <p>Please accept cookies for the best experience</p>
-        <form method="dialog">
-            <div class="options-list">
-                <button type="submit" value="COOKIE">COOKIE</button>
-                <button type="submit" value="hatesCookies">no dont hack me</button>
-            </div>
-            <hr>
-            <button type="button" id="cancelBtn">Cancel</button>
-        </form>
+        <div class="options-list">
+            <button type="button" id="cookieAcceptBtn">COOKIE</button>
+            <button type="button" id="cookieRejectBtn">no dont hack me</button>
+        </div>
+        <hr>
+        <button type="button" id="cancelBtn">Cancel</button>
     </dialog>
     
     <p id="resultText">No option chosen yet.</p>
-
+    
     <div id="cookieContainer"></div>
     
     <script src="index.js"></script>
