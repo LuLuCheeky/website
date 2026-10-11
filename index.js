@@ -3,6 +3,7 @@ const openBtn = document.getElementById('openBtn');
 const cancelBtn = document.getElementById('cancelBtn');
 const resultText = document.getElementById('resultText');
 const cookieContainer = document.getElementById('cookieContainer');
+const cookieEmoji = document.getElementById('cookieEmoji'); 
 
 const cookieAcceptBtn = document.getElementById('cookieAcceptBtn');
 const cookieRejectBtn = document.getElementById('cookieRejectBtn');
@@ -15,13 +16,12 @@ openBtn.addEventListener('click', () => {
 
 cookieAcceptBtn.addEventListener('click', () => {
     resultText.textContent = "You selected: COOKIE";
-    cookieContainer.textContent = '🍪';
-    
+    cookieEmoji.textContent = '🍪';
     cookieContainer.style.display = 'flex';
-
+    
     setTimeout(() => {
         cookieContainer.style.opacity = '1';
-        cookieContainer.style.transform = 'scale(1)';
+        cookieEmoji.style.transform = 'scale(1)';
     }, 20);
     
     bitesLeft = 4;
@@ -41,31 +41,29 @@ cancelBtn.addEventListener('click', () => {
 });
 
 function resetCookie() {
-    cookieContainer.style.transform = 'scale(0)';
+    cookieEmoji.style.transform = 'scale(0)';
     cookieContainer.style.opacity = '0';
     
-    // Completely hide layout after shrinking finishes
     setTimeout(() => {
         cookieContainer.style.display = 'none';
-        cookieContainer.textContent = '';
+        cookieEmoji.textContent = '';
     }, 300);
 }
-
-cookieContainer.addEventListener('click', () => {
+cookieEmoji.addEventListener('click', () => {
     if (bitesLeft > 0) {
         bitesLeft--;
         
-        cookieContainer.classList.add('crunch');
+        cookieEmoji.classList.add('crunch');
         setTimeout(() => {
-            cookieContainer.classList.remove('crunch');
+            cookieEmoji.classList.remove('crunch');
         }, 150);
 
         if (bitesLeft === 3) {
-            cookieContainer.style.transform = 'scale(0.75)';
+            cookieEmoji.style.transform = 'scale(0.75)';
         } else if (bitesLeft === 2) {
-            cookieContainer.style.transform = 'scale(0.5)';
+            cookieEmoji.style.transform = 'scale(0.5)';
         } else if (bitesLeft === 1) {
-            cookieContainer.style.transform = 'scale(0.25)';
+            cookieEmoji.style.transform = 'scale(0.25)';
         } else if (bitesLeft === 0) {
             resultText.textContent = "You ate the giant cookie! Yum.";
             resetCookie();
