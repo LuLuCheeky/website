@@ -35,7 +35,7 @@ cookieRejectBtn.addEventListener('click', () => {
 });
 
 cancelBtn.addEventListener('click', () => {
-    resultText.textContent = "Selection cancelled.";
+    resultText.textContent = "you chose uhhh nothing???";
     resetCookie();
     popup.close();
 });
@@ -59,11 +59,17 @@ cookieEmoji.addEventListener('click', () => {
         }, 150);
 
         if (bitesLeft === 3) {
-            cookieEmoji.style.transform = 'scale(0.75)';
+                clicker.classList.remove("click-animate");
+                void clicker.offsetWidth; 
+                clicker.classList.add("click-animate");
         } else if (bitesLeft === 2) {
-            cookieEmoji.style.transform = 'scale(0.5)';
+                clicker.classList.remove("click-animate");
+                void clicker.offsetWidth; 
+                clicker.classList.add("click-animate");
         } else if (bitesLeft === 1) {
-            cookieEmoji.style.transform = 'scale(0.25)';
+                clicker.classList.remove("click-animate");
+                void clicker.offsetWidth; 
+                clicker.classList.add("click-animate");
         } else if (bitesLeft === 0) {
             resultText.textContent = "You ate the giant cookie! Yum!1!1!";
             resetCookie();
