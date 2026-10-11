@@ -87,14 +87,13 @@
             cursor: pointer;
         }
         
-        /* 1. Fullscreen Shield: Stays fixed, dark, and blurred */
         #cookieContainer {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            display: none; /* Controlled completely by JS */
+            display: none; 
             align-items: center;
             justify-content: center;
             z-index: 9999;
@@ -105,7 +104,6 @@
             transition: opacity 0.3s ease;
         }
 
-        /* 2. Separate Cookie Object: Shrinks independently */
         #cookieEmoji {
             font-size: 55vw; 
             cursor: pointer;
@@ -115,7 +113,6 @@
             transform: scale(0);
         }
         
-        /* Bite popping animation frame */
         .crunch {
             transform: scale(0.9) !important;
         }
