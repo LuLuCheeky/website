@@ -15,7 +15,7 @@ openBtn.addEventListener('click', () => {
 });
 
 cookieAcceptBtn.addEventListener('click', () => {
-    resultText.textContent = "You selected: COOKIE";
+    resultText.textContent = "You chose cookie";
     cookieEmoji.textContent = '🍪';
     cookieContainer.style.display = 'flex';
     
@@ -29,7 +29,7 @@ cookieAcceptBtn.addEventListener('click', () => {
 });
 
 cookieRejectBtn.addEventListener('click', () => {
-    resultText.textContent = "You selected: hatesCookies";
+    resultText.textContent = "You hate Cookies";
     resetCookie();
     popup.close();
 });
@@ -65,7 +65,7 @@ cookieEmoji.addEventListener('click', () => {
         } else if (bitesLeft === 1) {
             cookieEmoji.style.transform = 'scale(0.25)';
         } else if (bitesLeft === 0) {
-            resultText.textContent = "You ate the giant cookie! Yum.";
+            resultText.textContent = "You ate the giant cookie! Yum!!1!";
             resetCookie();
         }
     }
