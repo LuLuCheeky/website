@@ -19,7 +19,7 @@ cookieAcceptBtn.addEventListener('click', () => {
     cookieContainer.style.opacity = '1';
     cookieEmoji.style.transform = 'scale(1)';
   }, 20);
-  cookieEmoji.innerHTML = `<img src="cookieFull.png" alt="Cookie" id="cookieImg">`;
+  cookieEmoji.innerHTML = `<img src="cookieImages/cookieFull.png" alt="Cookie" id="cookieImg">`;
   bitesLeft = 4;
   popup.close();
 });
@@ -55,17 +55,17 @@ cookieEmoji.addEventListener('click', () => {
     }, 150);
     if (img) {
       if (bitesLeft === 3) {
-        img.src = "cookie1Bites.png";
+        img.src = "cookieImages/cookie1Bites.png";
         cookieEmoji.classList.remove("click-animate");
         void cookieEmoji.offsetWidth;
         cookieEmoji.classList.add("click-animate");
       } else if (bitesLeft === 2) {
-        img.src = "cookie2Bites.png";
+        img.src = "cookieImages/cookie2Bites.png";
         cookieEmoji.classList.remove("click-animate");
         void cookieEmoji.offsetWidth;
         cookieEmoji.classList.add("click-animate");
       } else if (bitesLeft === 1) {
-        img.src = "cookie3Bites.png";
+        img.src = "cookieImages/cookie3Bites.png";
         cookieEmoji.classList.remove("click-animate");
         void cookieEmoji.offsetWidth;
         cookieEmoji.classList.add("click-animate");
