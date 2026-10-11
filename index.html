@@ -1,29 +1,24 @@
-<!DOCTYPE html> 
-<html lang="en"> 
-<head> 
-    <meta charset="UTF-8"> 
-    <title>LuLuCheeky's Website</title> 
-    <style> 
-        
-        body { 
-            text-align: center; 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LuLuCheeky's Website</title>
+    <style>
+        body {
+            text-align: center;
             font-family: clarity-city;
         }
-        
         h1 {
             text-align: center;
             font-size: 40px;
         }
-        
-        p { 
-            font-size: 30px; 
-        } 
-        
-        a { 
-            font-size: 30px; 
+        p {
+            font-size: 30px;
+        }
+        a {
+            font-size: 30px;
             text-align: center;
-        } 
-        
+        }
         section {
             background-color: white;
             color: black;
@@ -32,7 +27,6 @@
             padding: 15px;
             max-width: 600px;
         }
-
         nav {
             background-color: silver;
             border: 3px outset white;
@@ -40,101 +34,97 @@
             margin: 15px auto;
             max-width: 600px;
         }
-
         nav a {
             color: blue;
             text-align: center;
         }
-
         nav a:visited {
             color: purple;
             text-align: center;
         }
-
         dialog {
-          border: none;
-          border-radius: 12px;
-          padding: 24px;
-          width: 90%;
-          max-width: 350px;
-          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            border: none;
+            border-radius: 12px;
+            padding: 24px;
+            width: 90%;
+            max-width: 350px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
-
         dialog::backdrop {
-          background-color: rgba(0, 0, 0, 0.4);
-        }    
-
+            background-color: rgba(0, 0, 0, 0.4);
+        }
         .options-list {
-          display: flex;
-          flex-direction: column;
-          gap: 10px;
-          margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 15px;
         }
-
         .options-list button {
-          padding: 12px;
-          text-align: left;
-          border: 1px solid #ccc;
-          border-radius: 6px;
-          background-color: #f9f9f9;
-          font-size: 16px;
-          cursor: pointer;
-          transition: background 0.2s;
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            background-color: #f9f9f9;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.2s;
         }
-
         .options-list button:hover {
-          background-color: #e6f7ff;
-          border-color: #1890ff;
+            background-color: #e6f7ff;
+            border-color: #1890ff;
         }
-
         hr {
-          border: 0;
-          border-top: 1px solid #eee;
-          margin: 15px 0;
+            border: 0;
+            border-top: 1px solid #eee;
+            margin: 15px 0;
         }
-
         #cancelBtn {
-          width: 100%;
-          padding: 10px;
-          background: none;
-          border: none;
-          color: #666;
-          cursor: pointer;
+            width: 100%;
+            padding: 10px;
+            background: none;
+            border: none;
+            color: #666;
+            cursor: pointer;
         }
 
-    </style> 
-</head> 
-<body> 
+        #cookieContainer {
+            font-size: 100px;
+            margin-top: 20px;
+            transition: transform 0.2s ease;
+        }
+    </style>
+</head>
+<body>
     <h1>Hi!</h1>
-    <p>This is my new website :)</p> 
+    <p>This is my new website :)</p>
     <p>i put random stuff here; feel free to check it out</p>
     <br><br>
-    <p>Games i make when im bored</p> 
+    
+    <p>Games i make when im bored</p>
     <nav>
-    <a href="humanNinja.html">fruit ninja but cursed</a>
-    |
-    <a href="clicker.html">clicker</a>
+        <a href="humanNinja.html">fruit ninja but cursed</a> | 
+        <a href="clicker.html">clicker</a>
     </nav>
     
     <button id="openBtn">Choose an Option</button>
-
+    
     <dialog id="optionsPopup">
         <h2>Hello!</h2>
         <p>Please accept cookies for the best experience</p>
-    
         <form method="dialog">
             <div class="options-list">
                 <button type="submit" value="COOKIE">COOKIE</button>
                 <button type="submit" value="hatesCookies">no dont hack me</button>
             </div>
-    
             <hr>
             <button type="button" id="cancelBtn">Cancel</button>
         </form>
-     </dialog>
-
-    <p id="resultText">No option chosen yet.</p>
+    </dialog>
     
-    <script src = "index.js"></script>
-</body> 
+    <p id="resultText">No option chosen yet.</p>
+
+    <div id="cookieContainer"></div>
+    
+    <script src="index.js"></script>
+</body>
 </html>
