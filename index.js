@@ -3,75 +3,75 @@ const openBtn = document.getElementById('openBtn');
 const cancelBtn = document.getElementById('cancelBtn');
 const resultText = document.getElementById('resultText');
 const cookieContainer = document.getElementById('cookieContainer');
-const cookieEmoji = document.getElementById('cookieEmoji'); 
-
+const cookieEmoji = document.getElementById('cookieEmoji');
 const cookieAcceptBtn = document.getElementById('cookieAcceptBtn');
 const cookieRejectBtn = document.getElementById('cookieRejectBtn');
-
 let bitesLeft = 4;
 
 openBtn.addEventListener('click', () => {
-    popup.showModal();
+  popup.showModal();
 });
 
 cookieAcceptBtn.addEventListener('click', () => {
-    resultText.textContent = "You chose cookie";
-    cookieEmoji.textContent = '🍪';
-    cookieContainer.style.display = 'flex';
-    
-    setTimeout(() => {
-        cookieContainer.style.opacity = '1';
-        cookieEmoji.style.transform = 'scale(1)';
-    }, 20);
-    
-    bitesLeft = 4;
-    popup.close();
+  resultText.textContent = "You chose cookie";
+  cookieContainer.style.display = 'flex';
+  setTimeout(() => {
+    cookieContainer.style.opacity = '1';
+    cookieEmoji.style.transform = 'scale(1)';
+  }, 20);
+  cookieEmoji.innerHTML = `<img src="cookie-full.png" alt="Cookie" id="cookieImg">`;
+  bitesLeft = 4;
+  popup.close();
 });
 
 cookieRejectBtn.addEventListener('click', () => {
-    resultText.textContent = "You hate cookies 😡";
-    resetCookie();
-    popup.close();
+  resultText.textContent = "You hate cookies 😡";
+  resetCookie();
+  popup.close();
 });
 
 cancelBtn.addEventListener('click', () => {
-    resultText.textContent = "you chose uhhh nothing???";
-    resetCookie();
-    popup.close();
+  resultText.textContent = "you chose uhhh nothing???";
+  resetCookie();
+  popup.close();
 });
 
 function resetCookie() {
-    cookieEmoji.style.transform = 'scale(0)';
-    cookieContainer.style.opacity = '0';
-    
-    setTimeout(() => {
-        cookieContainer.style.display = 'none';
-        cookieEmoji.textContent = '';
-    }, 300);
+  cookieEmoji.style.transform = 'scale(0)';
+  cookieContainer.style.opacity = '0';
+  setTimeout(() => {
+    cookieContainer.style.display = 'none';
+    cookieEmoji.innerHTML = '';
+  }, 300);
 }
-cookieEmoji.addEventListener('click', () => {
-    if (bitesLeft > 0) {
-        bitesLeft--;
-        
-        cookieEmoji.classList.add('crunch');
-        setTimeout(() => {
-            cookieEmoji.classList.remove('crunch');
-        }, 150);
 
-        if (bitesLeft === 3) {
-                cookieEmoji.classList.remove("click-animate");
-                void cookieEmoji.offsetWidth; 
-                cookieEmoji.classList.add("click-animate");
-        } else if (bitesLeft === 2) {
-                cookieEmoji.classList.remove("click-animate");
-                void cookieEmoji.offsetWidth; 
-                cookieEmoji.classList.add("click-animate");
-        } else if (bitesLeft === 1) {
-                cookieEmoji.classList.remove("click-animate");
-                void cookieEmoji.offsetWidth; 
-                cookieEmoji.classList.add("click-animate");
-        } else if (bitesLeft === 0) {
-            resultText.textContent = "You ate the giant cookie! Yum!1!1!";
+cookieEmoji.addEventListener('click', () => {
+  if (bitesLeft > 0) {
+    bitesLeft--;
+    const img = cookieEmoji.querySelector('img');
+    cookieEmoji.classList.add('crunch');
+    setTimeout(() => {
+      cookieEmoji.classList.remove('crunch');
+    }, 150);
+    if (img) {
+      if (bitesLeft === 3) {
+        img.src = "cookie-bite1.png";
+      } else if (bitesLeft === 2) {
+        img.src = "cookie-bite2.png";
+      } else if (bitesLeft === 1) {
+        img.src = "cookie-bite3.png";
+      }
+    }
+    cookieEmoji.classList.remove("click-animate");
+    void cookieEmoji.offsetWidth;
+    cookieEmoji.classList.add("click-animate");
+    if (bitesLeft === 0) {
+      resultText.textContent = "You ate the giant cookie! Yum!1!1!";
+      resetCookie();
+    }
+  }
+});
+
             resetCookie();
         }
     }
