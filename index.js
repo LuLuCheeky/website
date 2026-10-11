@@ -55,17 +55,17 @@ cookieEmoji.addEventListener('click', () => {
     }, 150);
     if (img) {
       if (bitesLeft === 3) {
-        img.src = "cookieImages/cookie3Bite.png";
+        img.src = "cookieImages/cookie3Bites.png";
         cookieEmoji.classList.remove("click-animate");
         void cookieEmoji.offsetWidth;
         cookieEmoji.classList.add("click-animate");
       } else if (bitesLeft === 2) {
-        img.src = "cookieImages/cookie2Bite.png";
+        img.src = "cookieImages/cookie2Bites.png";
         cookieEmoji.classList.remove("click-animate");
         void cookieEmoji.offsetWidth;
         cookieEmoji.classList.add("click-animate");
       } else if (bitesLeft === 1) {
-        img.src = "cookieImages/cookie1Bite.png";
+        img.src = "cookieImages/cookie1Bites.png";
         cookieEmoji.classList.remove("click-animate");
         void cookieEmoji.offsetWidth;
         cookieEmoji.classList.add("click-animate");
