@@ -50,7 +50,58 @@
             color: purple;
             text-align: center;
         }
-        
+
+        dialog {
+          border: none;
+          border-radius: 12px;
+          padding: 24px;
+          width: 90%;
+          max-width: 350px;
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        dialog::backdrop {
+          background-color: rgba(0, 0, 0, 0.4);
+        }    
+
+        .options-list {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          margin-bottom: 15px;
+        }
+
+        .options-list button {
+          padding: 12px;
+          text-align: left;
+          border: 1px solid #ccc;
+          border-radius: 6px;
+          background-color: #f9f9f9;
+          font-size: 16px;
+          cursor: pointer;
+          transition: background 0.2s;
+        }
+
+        .options-list button:hover {
+          background-color: #e6f7ff;
+          border-color: #1890ff;
+        }
+
+        hr {
+          border: 0;
+          border-top: 1px solid #eee;
+          margin: 15px 0;
+        }
+
+        #cancelBtn {
+          width: 100%;
+          padding: 10px;
+          background: none;
+          border: none;
+          color: #666;
+          cursor: pointer;
+        }
+
     </style> 
 </head> 
 <body> 
@@ -68,25 +119,21 @@
     <button id="openBtn">Choose an Option</button>
 
     <dialog id="optionsPopup">
-    <h2>Hello!</h2>
-    <p>Please choose </p>
+        <h2>Hello!</h2>
+        <p>Please accept cookies for the best experience</p>
     
-  <form method="dialog">
-    <div class="options-list">
-      <!-- value attribute dictates what JavaScript receives -->
-      <button type="submit" value="Dark Mode">🌙 Dark Mode</button>
-      <button type="submit" value="Light Mode">☀️ Light Mode</button>
-      <button type="submit" value="System Default">💻 System Default</button>
-    </div>
+        <form method="dialog">
+            <div class="options-list">
+                <button type="submit" value="COOKIE">COOKIE</button>
+                <button type="submit" value="hatesCookies">no dont hack me</button>
+            </div>
     
-    <hr>
-    <!-- Cancel button just closes the pop-up without a valuable response -->
-    <button type="button" id="cancelBtn">Cancel</button>
-  </form>
-</dialog>
+            <hr>
+            <button type="button" id="cancelBtn">Cancel</button>
+        </form>
+     </dialog>
 
-<!-- Output Area to display the choice -->
-<p id="resultText">No option chosen yet.</p>
+    <p id="resultText">No option chosen yet.</p>
 
 
 </body> 
