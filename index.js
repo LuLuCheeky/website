@@ -18,10 +18,11 @@ cookieAcceptBtn.addEventListener('click', () => {
     cookieContainer.textContent = '🍪';
     
     cookieContainer.style.display = 'flex';
+
     setTimeout(() => {
         cookieContainer.style.opacity = '1';
         cookieContainer.style.transform = 'scale(1)';
-    }, 10);
+    }, 20);
     
     bitesLeft = 4;
     popup.close();
@@ -43,10 +44,11 @@ function resetCookie() {
     cookieContainer.style.transform = 'scale(0)';
     cookieContainer.style.opacity = '0';
     
+    // Completely hide layout after shrinking finishes
     setTimeout(() => {
         cookieContainer.style.display = 'none';
         cookieContainer.textContent = '';
-    }, 500);
+    }, 300);
 }
 
 cookieContainer.addEventListener('click', () => {
