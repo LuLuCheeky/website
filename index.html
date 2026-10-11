@@ -86,20 +86,27 @@
             color: #666;
             cursor: pointer;
         }
-        
-        /* The cookie style with smooth eating transition */
+    
         #cookieContainer {
-            font-size: 100px;
-            margin-top: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60vw; 
             cursor: pointer;
             user-select: none;
-            display: inline-block;
+            z-index: 9999; 
+            pointer-events: none; 
             transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.5s ease;
+            opacity: 0;
+            transform: scale(0);
         }
-        
-        /* Crunch animation frame */
         .crunch {
-            transform: scale(0.8) !important;
+            transform: scale(0.9) !important;
         }
     </style>
 </head>
