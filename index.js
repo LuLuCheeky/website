@@ -59,17 +59,17 @@ cookieEmoji.addEventListener('click', () => {
         }, 150);
 
         if (bitesLeft === 3) {
-                clicker.classList.remove("click-animate");
-                void clicker.offsetWidth; 
-                clicker.classList.add("click-animate");
+                cookieEmoji.classList.remove("click-animate");
+                void cookieEmoji.offsetWidth; 
+                cookieEmoji.classList.add("click-animate");
         } else if (bitesLeft === 2) {
-                clicker.classList.remove("click-animate");
-                void clicker.offsetWidth; 
-                clicker.classList.add("click-animate");
+                cookieEmoji.classList.remove("click-animate");
+                void cookieEmoji.offsetWidth; 
+                cookieEmoji.classList.add("click-animate");
         } else if (bitesLeft === 1) {
-                clicker.classList.remove("click-animate");
-                void clicker.offsetWidth; 
-                clicker.classList.add("click-animate");
+                cookieEmoji.classList.remove("click-animate");
+                void cookieEmoji.offsetWidth; 
+                cookieEmoji.classList.add("click-animate");
         } else if (bitesLeft === 0) {
             resultText.textContent = "You ate the giant cookie! Yum!1!1!";
             resetCookie();
