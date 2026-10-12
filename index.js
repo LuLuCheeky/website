@@ -46,24 +46,26 @@ function resetCookie() {
   }, 300);
 }
 
-cookieImage.addEventListener('click', () => {
-  if (bitesLeft > 0) {
-    bitesLeft--;
-    const img = cookieImage.querySelector('img');
-    cookieImage.classList.add('crunch');
-    setTimeout(() => {
-      cookieImage.classList.remove('crunch');
-    }, 150);
-    if (img) {
-      if (bites >= 1) {
-        img.src = `cookieImages/cookie${bitesLeft}Bites.png`;
-        cookieImage.classList.remove("click-animate");
-        void cookieImage.offsetWidth;
-        cookieImage.classList.add("click-animate");
-        crunch.play
-      } else {
-        resultText.textContent = "you ate the giant cookie! yum!1!!1";
-        resetCookie();
-      }
+cookieImage.addEventListener('click', () => { 
+    if (bitesLeft > 0) { 
+        bitesLeft--; 
+        const img = cookieImage.querySelector('img'); 
+        cookieImage.classList.add('crunch'); 
+        setTimeout(() => { 
+            cookieImage.classList.remove('crunch'); 
+        }, 150); 
+        if (img) { 
+            if (bitesLeft >= 1) { 
+                img.src = `cookieImages/cookie${bitesLeft}Bites.png`; 
+                cookieImage.classList.remove("click-animate"); 
+                void cookieImage.offsetWidth; 
+                cookieImage.classList.add("click-animate"); 
+                crunch.play(); 
+            } else { 
+                resultText.textContent = "you ate the giant cookie! yum!1!!1"; 
+                resetCookie(); 
+            } 
+        } 
     }
-  });
+});
+
