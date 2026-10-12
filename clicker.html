@@ -38,6 +38,39 @@
 		background-color: rgb(158, 158, 158);
     }
 
+	
+	@keyframes floatUp {
+   		0% {
+     	   transform: translateY(0);
+      	  opacity: 1;
+ 	   }
+
+ 	   100% {
+      	  transform: translateY(-60px);
+      	  opacity: 0;
+   	   }
+	}
+
+	.floating-text {
+		position: absolute;
+		color: black;
+ 	    font-size: 24px;
+		font-weight: bold;
+		pointer-events: none;
+		animation: floatUp 0.8s ease-out forwards;
+	}
+
+
+	.floating-text {
+    	position: fixed;
+    	left: 200px;
+   		top: 200px;
+   		color: black;
+    	font-size: 24px;
+   		font-weight: bold;
+    	pointer-events: none;
+    	animation: floatUp 0.8s ease-out forwards;
+	}
 
 	@keyframes clickBounce {
     	0% {
