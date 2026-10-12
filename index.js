@@ -50,10 +50,6 @@ cookieImage.addEventListener('click', () => {
     if (bitesLeft > 0) { 
         bitesLeft--; 
         const img = cookieImage.querySelector('img'); 
-        cookieImage.classList.add('crunch'); 
-        setTimeout(() => { 
-            cookieImage.classList.remove('crunch'); 
-        }, 150); 
         if (img) { 
             if (bitesLeft >= 1) { 
                 img.src = `cookieImages/cookie${bitesLeft}Bites.png`; 
@@ -68,4 +64,5 @@ cookieImage.addEventListener('click', () => {
         } 
     }
 });
+
 
