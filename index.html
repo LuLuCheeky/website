@@ -8,17 +8,21 @@
             text-align: center;
             font-family: clarity-city;
         }
+		
         h1 {
             text-align: center;
             font-size: 40px;
         }
+		
         p {
             font-size: 30px;
         }
+		
         a {
             font-size: 30px;
             text-align: center;
         }
+		
         section {
             background-color: white;
             color: black;
@@ -27,6 +31,7 @@
             padding: 15px;
             max-width: 600px;
         }
+		
         nav {
             background-color: silver;
             border: 3px outset white;
@@ -34,14 +39,17 @@
             margin: 15px auto;
             max-width: 600px;
         }
+		
         nav a {
             color: blue;
             text-align: center;
         }
-        nav a:visited {
+		
+        nav a : visited {
             color: purple;
             text-align: center;
         }
+		
         dialog {
             border: none;
             border-radius: 12px;
@@ -50,15 +58,18 @@
             max-width: 350px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
-        dialog::backdrop {
+		
+        dialog :: backdrop {
             background-color: rgba(0, 0, 0, 0.4);
         }
+		
         .options-list {
             display: flex;
             flex-direction: column;
             gap: 10px;
             margin-bottom: 15px;
         }
+		
         .options-list button {
             padding: 12px;
             text-align: left;
@@ -69,15 +80,18 @@
             cursor: pointer;
             transition: background 0.2s;
         }
-        .options-list button:hover {
-            background-color: #e6f7ff;
-            border-color: #1890ff;
+		
+        .options-list button : hover {
+            background-color: #ffeb36;
+            border-color: #ffe600;
         }
+		
         hr {
             border: 0;
             border-top: 1px solid #eee;
             margin: 15px 0;
         }
+		
         #cancelBtn {
             width: 100%;
             padding: 10px;
@@ -104,7 +118,7 @@
             transition: opacity 0.3s ease;
         }
 
-        #cookieEmoji {
+        #cookieImage {
             font-size: 55vw; 
             cursor: pointer;
             user-select: none;
@@ -164,9 +178,9 @@
     <p id="resultText">No option chosen yet.</p>
 
     <div id="cookieContainer">
-        <div id="cookieEmoji"></div>
+        <div id="cookieImage"></div>
     </div>
-    
-    <script src="index.js"></script>
+	
+	<script src="index.js"></script>
 </body>
-</html>
+
