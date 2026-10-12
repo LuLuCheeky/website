@@ -2,6 +2,7 @@ let clicks = 0;
 const clickCount = document.getElementById("clicks");
 const clicker = document.getElementById("clicker");
 
+
 clicker.addEventListener("click", function() {
     clicks += 1;
     clickCount.textContent = clicks;
@@ -14,3 +15,16 @@ clicker.addEventListener("click", function() {
 clicker.addEventListener("animationend", function() {
     clicker.classList.remove("click-animate");
 });
+
+const floatingText = document.createElement("span");
+
+floatingText.textContent = "+1";
+floatingText.classList.add("floating-text");
+
+floatingText.style.left = "200px";
+floatingText.style.top = "200px";
+
+document.body.appendChild(floatingText);
+floatingText.addEventListener("animationend", function() {
+    floatingText.remove();
+});	
