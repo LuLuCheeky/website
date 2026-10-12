@@ -3,9 +3,10 @@ const openBtn = document.getElementById('openBtn');
 const cancelBtn = document.getElementById('cancelBtn');
 const resultText = document.getElementById('resultText');
 const cookieContainer = document.getElementById('cookieContainer');
-const cookieEmoji = document.getElementById('cookieEmoji');
+const cookieImage = document.getElementById('cookieImage');
 const cookieAcceptBtn = document.getElementById('cookieAcceptBtn');
 const cookieRejectBtn = document.getElementById('cookieRejectBtn');
+const crunch = new Audio('cookieCrunch.mp3');
 let bitesLeft = 4;
 
 openBtn.addEventListener('click', () => {
@@ -17,9 +18,9 @@ cookieAcceptBtn.addEventListener('click', () => {
   cookieContainer.style.display = 'flex';
   setTimeout(() => {
     cookieContainer.style.opacity = '1';
-    cookieEmoji.style.transform = 'scale(1)';
+    cookieImage.style.transform = 'scale(1)';
   }, 20);
-  cookieEmoji.innerHTML = `<img src="cookieImages/cookieFull.png" alt="Cookie" id="cookieImg">`;
+  cookieImage.innerHTML = `<img src="cookieImages/cookieFull.png" alt="Cookie" id="cookieImg">`;
   bitesLeft = 4;
   popup.close();
 });
@@ -37,43 +38,32 @@ cancelBtn.addEventListener('click', () => {
 });
 
 function resetCookie() {
-  cookieEmoji.style.transform = 'scale(0)';
+  cookieImage.style.transform = 'scale(0)';
   cookieContainer.style.opacity = '0';
   setTimeout(() => {
     cookieContainer.style.display = 'none';
-    cookieEmoji.innerHTML = '';
+    cookieImage.innerHTML = '';
   }, 300);
 }
 
-cookieEmoji.addEventListener('click', () => {
+cookieImage.addEventListener('click', () => {
   if (bitesLeft > 0) {
     bitesLeft--;
-    const img = cookieEmoji.querySelector('img');
-    cookieEmoji.classList.add('crunch');
+    const img = cookieImage.querySelector('img');
+    cookieImage.classList.add('crunch');
     setTimeout(() => {
-      cookieEmoji.classList.remove('crunch');
+      cookieImage.classList.remove('crunch');
     }, 150);
     if (img) {
-      if (bitesLeft === 3) {
-        img.src = "cookieImages/cookie3Bites.png";
-        cookieEmoji.classList.remove("click-animate");
-        void cookieEmoji.offsetWidth;
-        cookieEmoji.classList.add("click-animate");
-      } else if (bitesLeft === 2) {
-        img.src = "cookieImages/cookie2Bites.png";
-        cookieEmoji.classList.remove("click-animate");
-        void cookieEmoji.offsetWidth;
-        cookieEmoji.classList.add("click-animate");
-      } else if (bitesLeft === 1) {
-        img.src = "cookieImages/cookie1Bites.png";
-        cookieEmoji.classList.remove("click-animate");
-        void cookieEmoji.offsetWidth;
-        cookieEmoji.classList.add("click-animate");
+      if (bites >= 1) {
+        img.src = `cookieImages/cookie${bitesLeft}Bites.png`;
+        cookieImage.classList.remove("click-animate");
+        void cookieImage.offsetWidth;
+        cookieImage.classList.add("click-animate");
+        crunch.play
+      } else {
+        resultText.textContent = "you ate the giant cookie! yum!1!!1";
+        resetCookie();
       }
     }
-    if (bitesLeft === 0) {
-      resultText.textContent = "You ate the giant cookie! Yum!1!1!";
-      resetCookie();
-    }
-  }
-});
+  });
