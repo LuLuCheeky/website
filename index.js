@@ -96,14 +96,15 @@ cookieImage.addEventListener('click', () => {
                     resetCookie();
                     setTimeout(() => {
                         goldenBurp.play();
-                    },     1000);
+                    }, 1000);
                 } else {
                     crunch.play();
                     resultText.textContent = "you ate the giant cookie! yum!1!!1";
                     resetCookie();
                     setTimeout(() => {
                         burp.play();
-                    },     1000);
+                    }, 1000);
+                }
             }
         }
     }
