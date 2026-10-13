@@ -11,6 +11,7 @@ const burp = new Audio('burp.mp3');
 let bitesLeft = 4;
 let isCooldown = false;
 let golden, cookieType;
+const cookieTypes = ["oatmeal", "chocolate"];
 
 openBtn.addEventListener('click', () => {
   popup.showModal();
@@ -31,7 +32,8 @@ cookieAcceptBtn.addEventListener('click', () => {
   if (golden === 25) {
       cookieImage.innerHTML = `<img src="cookieImages/goldenCookieFull.png" alt="Cookie" id="cookieImg">`;
   } else {
-    cookieImage.innerHTML = `<img src="cookieImages/cookieFull.png" alt="Cookie" id="cookieImg">`;
+    cookieType = Math.floor(Math.random() * 2);
+    cookieImage.innerHTML = `<img src="cookieImages/${cookiesTypes[cookieType]}.png" alt="Cookie" id="cookieImg">`;
   }
   bitesLeft = 4;
   isCooldown = false;
@@ -84,9 +86,9 @@ cookieImage.addEventListener('click', () => {
                 crunch.play(); 
                 isCooldown = true;
                 if (cookieType === 1) {
-                  img.src = `cookieImages/chocolateCookie${bitesLeft}Bites.png`; 
+                  img.src = `cookieImages/${cookiesTypes[cookieType]}Cookie${bitesLeft}Bites.png`; 
                 } else {
-                  img.src = `cookieImages/oatmealCookie${bitesLeft}Bites.png`;
+                  img.src = `cookieImages/${cookiesTypes[cookieType]}Cookie${bitesLeft}Bites.png`;
                 }
                 cookieImage.classList.remove("click-animate"); 
                 void cookieImage.offsetWidth; 
