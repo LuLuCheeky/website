@@ -10,21 +10,19 @@ clicker.addEventListener("click", function() {
     clicker.classList.remove("click-animate");
     void clicker.offsetWidth; 
     clicker.classList.add("click-animate");
+    
+    const floatingText = document.createElement("span");
+
+    floatingText.textContent = "+1";
+    floatingText.classList.add("floating-text");
+
+    floatingText.style.left = "200px";
+    floatingText.style.top = "200px";
+
+    document.body.appendChild(floatingText);
+    floatingText.addEventListener("animationend", function() {
+        floatingText.remove();
+    });
 });
 
-clicker.addEventListener("animationend", function() {
-    clicker.classList.remove("click-animate");
-});
 
-const floatingText = document.createElement("span");
-
-floatingText.textContent = "+1";
-floatingText.classList.add("floating-text");
-
-floatingText.style.left = "200px";
-floatingText.style.top = "200px";
-
-document.body.appendChild(floatingText);
-floatingText.addEventListener("animationend", function() {
-    floatingText.remove();
-});	
