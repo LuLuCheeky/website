@@ -14,97 +14,88 @@ let golden, cookieType;
 const cookieTypes = ["oatmeal", "chocolate"];
 
 openBtn.addEventListener('click', () => {
-  popup.showModal();
+    popup.showModal();
 });
 
 cookieAcceptBtn.addEventListener('click', () => {
-  resultText.textContent = "You chose cookie";
-  cookieContainer.style.display = 'flex';
-  
-  setTimeout(() => {
-    cookieContainer.style.opacity = '1';
-    cookieImage.style.transform = 'scale(1)';
-  }, 20);
-
-  golden = Math.floor(Math.random() * 25) + 1;
-  console.log(golden);
-  
-  if (golden === 25) {
-      cookieImage.innerHTML = `<img src="cookieImages/goldenCookieFull.png" alt="Cookie" id="cookieImg">`;
-  } else {
-    cookieType = Math.floor(Math.random() * 2);
-    cookieImage.innerHTML = `<img src="cookieImages/${cookiesTypes[cookieType]}.png" alt="Cookie" id="cookieImg">`;
-  }
-  bitesLeft = 4;
-  isCooldown = false;
-  popup.close();
+    resultText.textContent = "You chose cookie";
+    cookieContainer.style.display = 'flex';
+    setTimeout(() => {
+        cookieContainer.style.opacity = '1';
+        cookieImage.style.transform = 'scale(1)';
+    }, 20);
+    golden = Math.floor(Math.random() * 25) + 1;
+    console.log(golden);
+    if (golden === 25) {
+        cookieImage.innerHTML = `<img src="cookieImages/goldenCookieFull.png" alt="Cookie" id="cookieImg">`;
+    } else {
+        cookieType = Math.floor(Math.random() * 2);
+        cookieImage.innerHTML = `<img src="cookieImages/${cookieTypes[cookieType]}.png" alt="Cookie" id="cookieImg">`;
+    }
+    bitesLeft = 4;
+    isCooldown = false;
+    popup.close();
 });
 
 cookieRejectBtn.addEventListener('click', () => {
-  resultText.textContent = "You hate cookies 😡";
-  resetCookie();
-  popup.close();
+    resultText.textContent = "You hate cookies 😡";
+    resetCookie();
+    popup.close();
 });
 
 cancelBtn.addEventListener('click', () => {
-  resultText.textContent = "you chose uhhh nothing???";
-  resetCookie();
-  popup.close();
+    resultText.textContent = "you chose uhhh nothing???";
+    resetCookie();
+    popup.close();
 });
 
 function resetCookie() {
-  cookieImage.style.transform = 'scale(0)';
-  cookieContainer.style.opacity = '0';
-  setTimeout(() => {
-    cookieContainer.style.display = 'none';
-    cookieImage.innerHTML = '';
-  }, 300);
+    cookieImage.style.transform = 'scale(0)';
+    cookieContainer.style.opacity = '0';
+    setTimeout(() => {
+        cookieContainer.style.display = 'none';
+        cookieImage.innerHTML = '';
+    }, 300);
 }
 
-cookieImage.addEventListener('click', () => { 
+cookieImage.addEventListener('click', () => {
     if (isCooldown) {
         return;
     }
-  
-    if (bitesLeft > 0) { 
-        bitesLeft--; 
-        const img = cookieImage.querySelector('img');         
-        if (img) { 
-            if (bitesLeft >= 1) { 
-              if (golden === 25) {
-                crunch.play(); 
-                isCooldown = true;
-                img.src = `cookieImages/goldenCookie${bitesLeft}Bites.png`;              
-                cookieImage.classList.remove("click-animate"); 
-                void cookieImage.offsetWidth; 
-                cookieImage.classList.add("click-animate");              
-                setTimeout(() => {
-                    isCooldown = false;
-                }, 200);
-              } else {
-                cookieType = Math.floor(Math.random() * 2) + 1;
-                crunch.play(); 
-                isCooldown = true;
-                if (cookieType === 1) {
-                  img.src = `cookieImages/${cookiesTypes[cookieType]}Cookie${bitesLeft}Bites.png`; 
+    if (bitesLeft > 0) {
+        bitesLeft--;
+        const img = cookieImage.querySelector('img');
+        if (img) {
+            if (bitesLeft >= 1) {
+                if (golden === 25) {
+                    crunch.play();
+                    isCooldown = true;
+                    img.src = `cookieImages/goldenCookie${bitesLeft}Bites.png`;
+                    cookieImage.classList.remove("click-animate");
+                    void cookieImage.offsetWidth;
+                    cookieImage.classList.add("click-animate");
+                    setTimeout(() => {
+                        isCooldown = false;
+                    }, 200);
                 } else {
-                  img.src = `cookieImages/${cookiesTypes[cookieType]}Cookie${bitesLeft}Bites.png`;
+                    crunch.play();
+                    isCooldown = true;
+                    img.src = `cookieImages/${cookieTypes[cookieType]}Cookie${bitesLeft}Bites.png`;
+                    cookieImage.classList.remove("click-animate");
+                    void cookieImage.offsetWidth;
+                    cookieImage.classList.add("click-animate");
+                    setTimeout(() => {
+                        isCooldown = false;
+                    }, 200);
                 }
-                cookieImage.classList.remove("click-animate"); 
-                void cookieImage.offsetWidth; 
-                cookieImage.classList.add("click-animate");              
+            } else {
+                crunch.play();
+                resultText.textContent = "you ate the giant cookie! yum!1!!1";
+                resetCookie();
                 setTimeout(() => {
-                    isCooldown = false;
-                }, 200);
-              }
-            } else { 
-                crunch.play(); 
-                resultText.textContent = "you ate the giant cookie! yum!1!!1"; 
-                resetCookie(); 
-                setTimeout(() => {
-                  burp.play();
+                    burp.play();
                 }, 1000);
-            } 
-        } 
+            }
+        }
     }
 });
