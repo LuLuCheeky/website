@@ -10,6 +10,7 @@ const crunch = new Audio('cookieCrunch.mp3');
 const burp = new Audio('burp.mp3');
 let bitesLeft = 4;
 let isCooldown = false;
+let golden;
 
 openBtn.addEventListener('click', () => {
   popup.showModal();
@@ -23,8 +24,14 @@ cookieAcceptBtn.addEventListener('click', () => {
     cookieContainer.style.opacity = '1';
     cookieImage.style.transform = 'scale(1)';
   }, 20);
-  
-  cookieImage.innerHTML = `<img src="cookieImages/cookieFull.png" alt="Cookie" id="cookieImg">`;
+
+  golden = random(1, 25);
+  console.log(golden);
+  if (golden === 25) {
+      cookieImage.innerHTML = `<img src="cookieImages/goldenCookieFull.png" alt="Cookie" id="cookieImg">`;
+  } else {
+    cookieImage.innerHTML = `<img src="cookieImages/cookieFull.png" alt="Cookie" id="cookieImg">`;
+  }
   bitesLeft = 4;
   isCooldown = false;
   popup.close();
@@ -61,6 +68,17 @@ cookieImage.addEventListener('click', () => {
         const img = cookieImage.querySelector('img');         
         if (img) { 
             if (bitesLeft >= 1) { 
+              if (golden === 25) {
+                crunch.play(); 
+                isCooldown = true;
+                img.src = `cookieImages/goldenCookie${bitesLeft}Bites.png`;              
+                cookieImage.classList.remove("click-animate"); 
+                void cookieImage.offsetWidth; 
+                cookieImage.classList.add("click-animate");              
+                setTimeout(() => {
+                    isCooldown = false;
+                }, 200);
+              } else {
                 crunch.play(); 
                 isCooldown = true;
                 img.src = `cookieImages/cookie${bitesLeft}Bites.png`;              
@@ -70,6 +88,7 @@ cookieImage.addEventListener('click', () => {
                 setTimeout(() => {
                     isCooldown = false;
                 }, 200);
+              }
             } else { 
                 crunch.play(); 
                 resultText.textContent = "you ate the giant cookie! yum!1!!1"; 
