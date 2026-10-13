@@ -8,6 +8,7 @@ const cookieAcceptBtn = document.getElementById('cookieAcceptBtn');
 const cookieRejectBtn = document.getElementById('cookieRejectBtn');
 const crunch = new Audio('cookieCrunch.mp3');
 const burp = new Audio('burp.mp3');
+const goldenBurp = new Audio('goldenBurb.mp3');
 let bitesLeft = 4;
 let isCooldown = false;
 let golden, cookieType;
@@ -89,12 +90,20 @@ cookieImage.addEventListener('click', () => {
                     }, 200);
                 }
             } else {
-                crunch.play();
-                resultText.textContent = "you ate the giant cookie! yum!1!!1";
-                resetCookie();
-                setTimeout(() => {
-                    burp.play();
-                }, 1000);
+                if (golden === 25) {
+                    crunch.play();
+                    resultText.textContent = "oooohh shiny!!";
+                    resetCookie();
+                    setTimeout(() => {
+                        goldenBurp.play();
+                    },     1000);
+                } else {
+                    crunch.play();
+                    resultText.textContent = "you ate the giant cookie! yum!1!!1";
+                    resetCookie();
+                    setTimeout(() => {
+                        burp.play();
+                    },     1000);
             }
         }
     }
