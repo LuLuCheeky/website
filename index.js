@@ -30,7 +30,7 @@ cookieAcceptBtn.addEventListener('click', () => {
         cookieImage.innerHTML = `<img src="cookieImages/goldenCookieFull.png" alt="Cookie" id="cookieImg">`;
     } else {
         cookieType = Math.floor(Math.random() * 2);
-        cookieImage.innerHTML = `<img src="cookieImages/${cookieTypes[cookieType]}.png" alt="Cookie" id="cookieImg">`;
+        cookieImage.innerHTML = `<img src="cookieImages/${cookieTypes[cookieType]}CookieFull.png" alt="Cookie" id="cookieImg">`;
     }
     bitesLeft = 4;
     isCooldown = false;
