@@ -7,6 +7,7 @@ const cookieImage = document.getElementById('cookieImage');
 const cookieAcceptBtn = document.getElementById('cookieAcceptBtn');
 const cookieRejectBtn = document.getElementById('cookieRejectBtn');
 const crunch = new Audio('cookieCrunch.mp3');
+const burp = new Audio('burp.mp3');
 let bitesLeft = 4;
 let isCooldown = false;
 
@@ -73,6 +74,9 @@ cookieImage.addEventListener('click', () => {
                 crunch.play(); 
                 resultText.textContent = "you ate the giant cookie! yum!1!!1"; 
                 resetCookie(); 
+                setTimeout(() => {
+                  burp.play();
+                }, 1000);
             } 
         } 
     }
