@@ -60,16 +60,17 @@ cookieImage.addEventListener('click', () => {
         const img = cookieImage.querySelector('img');         
         if (img) { 
             if (bitesLeft >= 1) { 
+                crunch.play(); 
                 isCooldown = true;
                 img.src = `cookieImages/cookie${bitesLeft}Bites.png`;              
                 cookieImage.classList.remove("click-animate"); 
                 void cookieImage.offsetWidth; 
                 cookieImage.classList.add("click-animate");              
-                crunch.play(); 
                 setTimeout(() => {
                     isCooldown = false;
                 }, 200);
             } else { 
+                crunch.play(); 
                 resultText.textContent = "you ate the giant cookie! yum!1!!1"; 
                 resetCookie(); 
             } 
