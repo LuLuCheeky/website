@@ -8,7 +8,7 @@ const cookieAcceptBtn = document.getElementById('cookieAcceptBtn');
 const cookieRejectBtn = document.getElementById('cookieRejectBtn');
 const crunch = new Audio('cookieCrunch.mp3');
 const burp = new Audio('burp.mp3');
-const goldenBurp = new Audio('goldenBurb.mp3');
+const goldenBurp = new Audio('goldenBurp.mp3');
 let bitesLeft = 4;
 let isCooldown = false;
 let golden, cookieType;
