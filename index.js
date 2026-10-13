@@ -25,8 +25,9 @@ cookieAcceptBtn.addEventListener('click', () => {
     cookieImage.style.transform = 'scale(1)';
   }, 20);
 
-  golden = random(1, 25);
+  golden = Math.floor(Math.random() * 25) + 1;
   console.log(golden);
+  
   if (golden === 25) {
       cookieImage.innerHTML = `<img src="cookieImages/goldenCookieFull.png" alt="Cookie" id="cookieImg">`;
   } else {
