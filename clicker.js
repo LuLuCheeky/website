@@ -15,7 +15,7 @@ clicker.addEventListener("click", function() {
     floatingText.textContent = "+1";
     floatingText.classList.add("floating-text");
 
-    const buttonPosition = cookieButton.getBoundingClientRect();
+    const buttonPosition = clicker.getBoundingClientRect();
 
     floatingText.style.left = buttonPosition.left + Math.floor(Math.random() * 20) + px;
     floatingText.style.top = buttonPosition.top + "px";
