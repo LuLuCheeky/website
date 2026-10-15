@@ -109,3 +109,19 @@ cookieImage.addEventListener('click', () => {
         }
     }
 });
+
+let visitors = localStorage.getItem("visitors");
+
+if (visitors === null) {
+    visitors = 0;
+}
+
+visitors = Number(visitors);
+
+visitors = visitors + 1;
+
+localStorage.setItem("visitors", visitors);
+
+const visitorCount = document.getElementById("visitorCount");
+
+visitorCount.textContent = String(visitors).padStart(6, "0");
