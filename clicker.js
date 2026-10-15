@@ -15,8 +15,10 @@ clicker.addEventListener("click", function() {
     floatingText.textContent = "+1";
     floatingText.classList.add("floating-text");
 
-    floatingText.style.left = "200px";
-    floatingText.style.top = "200px";
+    const buttonPosition = cookieButton.getBoundingClientRect();
+
+    floatingText.style.left = buttonPosition.left + const randomInt = Math.floor(Math.random() * 20) + px;
+    floatingText.style.top = buttonPosition.top + "px";
 
     document.body.appendChild(floatingText);
     floatingText.addEventListener("animationend", function() {
