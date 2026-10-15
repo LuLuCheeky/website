@@ -14,19 +14,23 @@ let isCooldown = false;
 let golden, cookieType;
 const cookieTypes = ["oatmeal", "chocolate"];
 
+function playSound(audioTrack) {
+    audioTrack.currentTime = 0;
+    audioTrack.play().catch(e => {});
+}
+
 openBtn.addEventListener('click', () => {
     popup.showModal();
 });
 
 cookieAcceptBtn.addEventListener('click', () => {
     resultText.textContent = "You chose cookie";
+    cookieImage.style.transform = 'scale(0)';
     cookieContainer.style.display = 'flex';
-    setTimeout(() => {
-        cookieContainer.style.opacity = '1';
-        cookieImage.style.transform = 'scale(1)';
-    }, 20);
+    void cookieContainer.offsetWidth; 
+    cookieContainer.style.opacity = '1';
+    cookieImage.style.transform = 'scale(1)';
     golden = Math.floor(Math.random() * 25) + 1;
-    console.log(golden);
     if (golden === 25) {
         cookieImage.innerHTML = `<img src="cookieImages/goldenCookieFull.png" alt="Cookie" id="cookieImg">`;
     } else {
@@ -67,43 +71,35 @@ cookieImage.addEventListener('click', () => {
         bitesLeft--;
         const img = cookieImage.querySelector('img');
         if (img) {
+            cookieImage.classList.remove("click-animate");
+            void cookieImage.offsetWidth;
+            cookieImage.classList.add("click-animate");
             if (bitesLeft >= 1) {
+                playSound(crunch);
+                isCooldown = true;
                 if (golden === 25) {
-                    crunch.play();
-                    isCooldown = true;
                     img.src = `cookieImages/goldenCookie${bitesLeft}Bites.png`;
-                    cookieImage.classList.remove("click-animate");
-                    void cookieImage.offsetWidth;
-                    cookieImage.classList.add("click-animate");
-                    setTimeout(() => {
-                        isCooldown = false;
-                    }, 200);
                 } else {
-                    crunch.play();
-                    isCooldown = true;
                     img.src = `cookieImages/${cookieTypes[cookieType]}Cookie${bitesLeft}Bites.png`;
-                    cookieImage.classList.remove("click-animate");
-                    void cookieImage.offsetWidth;
-                    cookieImage.classList.add("click-animate");
-                    setTimeout(() => {
-                        isCooldown = false;
-                    }, 200);
                 }
+                setTimeout(() => {
+                    isCooldown = false;
+                }, 200);
             } else {
+                playSound(crunch);
+                isCooldown = true;
                 if (golden === 25) {
-                    crunch.play();
                     resultText.textContent = "oooohh shiny!!";
                     resetCookie();
                     setTimeout(() => {
-                        goldenBurp.play();
-                    }, 1000);
+                        playSound(goldenBurp);
+                    }, 600);
                 } else {
-                    crunch.play();
                     resultText.textContent = "you ate the giant cookie! yum!1!!1";
                     resetCookie();
                     setTimeout(() => {
-                        burp.play();
-                    }, 1000);
+                        playSound(burp);
+                    }, 600);
                 }
             }
         }
@@ -111,17 +107,12 @@ cookieImage.addEventListener('click', () => {
 });
 
 let visitors = localStorage.getItem("visitors");
-
 if (visitors === null) {
     visitors = 0;
 }
-
-visitors = Number(visitors);
-
-visitors = visitors + 1;
-
+visitors = Number(visitors) + 1;
 localStorage.setItem("visitors", visitors);
-
 const visitorCount = document.getElementById("visitorCount");
-
-visitorCount.textContent = String(visitors).padStart(6, "0");
+if (visitorCount) {
+    visitorCount.textContent = String(visitors).padStart(6, "0");
+}
