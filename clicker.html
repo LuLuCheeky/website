@@ -16,83 +16,83 @@
          font-size: 30px;
       }  
 
-    #clicker {
-      background-color: #c0c0c0;
-      color: black;
-      font-family: "Comic Sans MS", cursive;
-      font-size: 20px;
-      padding: 10px 20px;
-      border: 3px outset white;
-      cursor: pointer;
-	  text-align: center;
-	  bottom: 200px;
-      right: 1000px;  
-      z-index: 1000; 
-    }
+   	  #clicker {
+      	background-color: #c0c0c0;
+      	color: black;
+      	font-family: "Comic Sans MS", cursive;
+      	font-size: 20px;
+      	padding: 10px 20px;
+      	border: 3px outset white;
+      	cursor: pointer;
+	  	text-align: center;
+	  	bottom: 200px;
+      	right: 1000px;  
+      	z-index: 1000; 
+      }
 
-    #clicker:hover {
-      background-color: grey;
-    }
+      #clicker:hover {
+      	background-color: grey;
+      }
 
-    #clicker:active {
-		background-color: rgb(158, 158, 158);
-    }
+      #clicker:active {
+	  	background-color: rgb(158, 158, 158);
+      }
 
 	
-	@keyframes floatUp {
-   		0% {
-     	   transform: translateY(0);
-      	  opacity: 1;
- 	   }
+	  @keyframes floatUp {
+   			0% {
+     	   		transform: translateY(0);
+      	  		opacity: 1;
+ 	   		}
 
- 	   100% {
-      	  transform: translateY(-60px);
-      	  opacity: 0;
-   	   }
-	}
+ 	   		100% {
+      	  		transform: translateY(-60px);
+      	  		opacity: 0;
+   	   		}
+		}
 
-	.floating-text {
-		position: absolute;
-		color: black;
- 	    font-size: 24px;
-		font-weight: bold;
-		pointer-events: none;
-		animation: floatUp 0.8s ease-out forwards;
-	}
+		.floating-text {
+			position: absolute;
+			color: black;
+ 	    	font-size: 24px;
+			font-weight: bold;
+			pointer-events: none;
+			animation: floatUp 0.8s ease-out forwards;
+		}
 
 
-	.floating-text {
-    	position: fixed;
-    	left: 200px;
-   		top: 200px;
-   		color: black;
-    	font-size: 24px;
-   		font-weight: bold;
-    	pointer-events: none;
-    	animation: floatUp 0.8s ease-out forwards;
-	}
+		.floating-text {
+    		position: fixed;
+    		left: 200px;
+   			top: 200px;
+   			color: black;
+    		font-size: 24px;
+   			font-weight: bold;
+    		pointer-events: none;
+    		animation: floatUp 0.8s ease-out forwards;
+		}
 
-	@keyframes clickBounce {
-    	0% {
-        	transform: scale(1);
-    	}
+		@keyframes clickBounce {
+    		0% {
+        		transform: scale(1);
+    		}
 
-    	45% {
-        	transform: scale(0.9);
-    	}
+    		45% {
+        		transform: scale(0.9);
+    		}
 
-    	70% {
-        	transform: scale(1.1);
-    	}
+    		70% {
+        		transform: scale(1.1);
+    		}
 
-    	100% {
-        	transform: scale(1);
-    	}
-	}
+    		100% {
+        		transform: scale(1);
+    		}
+		}
 
-	.click-animate {
-    	animation: clickBounce 0.2s ease-out;
-	}
+		.click-animate {
+    		animation: clickBounce 0.2s ease-out;
+		}
 
   </style> 
 
