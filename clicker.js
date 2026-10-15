@@ -17,7 +17,7 @@ clicker.addEventListener("click", function() {
 
     const buttonPosition = clicker.getBoundingClientRect();
 
-    floatingText.style.left = buttonPosition.left + Math.floor(Math.random() * 20) + px;
+    floatingText.style.left = buttonPosition.left + Math.floor(Math.random() * 20) + "px";
     floatingText.style.top = buttonPosition.top + "px";
 
     document.body.appendChild(floatingText);
