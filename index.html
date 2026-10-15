@@ -164,7 +164,18 @@
 
         .click-animate {
             animation: click 0.2s ease-out forwards;
-        }      
+        }
+
+		#visitorCount {
+    		display: inline-block;
+    		background-color: black;
+   		 	color: lime;
+    		font-family: monospace;
+   			font-size: 28px;
+    		padding: 8px 12px;
+    		border: 3px inset white;
+    		letter-spacing: 4px;
+		}
     </style>
 </head>
 <body>
@@ -197,6 +208,9 @@
     <div id="cookieContainer">
         <div id="cookieImage"></div>
     </div>
+	
+	<p>🌐 You are visitor number:</p>
+	<p id="visitorCount">000001</p>
 	
 	<script src="index.js"></script>
 </body>
